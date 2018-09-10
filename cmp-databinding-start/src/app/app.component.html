@@ -1,0 +1,13 @@
+<div class="container">
+  <!--On event, set serverCreated and blueprintCreated -->
+  <app-cockpit
+  (serverCreated)="onServerAdded($event)"
+  (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <hr>
+  <div class="row">
+      <!-- Point each iteration of serverElement to 'element' inside app-server-component class. -->
+      <app-server-element
+      *ngFor="let serverElement of serverElements"
+      [element]="serverElement"></app-server-element>
+  </div>
+</div>
