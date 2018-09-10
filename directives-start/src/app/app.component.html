@@ -6,28 +6,39 @@
       <br>
       <ul class="list-group">
         <div *ngIf="onlyOdd">
-          <li class="list-group-item"
-              [ngStyle]="{backgroundColor: number % 2 !== 0 ? '#f2f2f2' : 'transparent'}"
-              [ngClass]="{odd: number % 2 !== 0}"
-              *ngFor="let number of oddNums">
+          <li class="list-group-item" [ngStyle]="{backgroundColor: number % 2 !== 0 ? '#f2f2f2' : 'transparent'}" [ngClass]="{odd: number % 2 !== 0}"
+            *ngFor="let number of oddNums">
             {{ number }}
           </li>
         </div>
         <div *ngIf="!onlyOdd">
-          <li class="list-group-item"
-              [ngStyle]="{backgroundColor: number % 2 !== 0 ? '#f2f2f2' : 'transparent'}"
-              [ngClass]="{odd: number % 2 !== 0}"
-              *ngFor="let number of evenNums">
+          <li class="list-group-item" [ngStyle]="{backgroundColor: number % 2 !== 0 ? '#f2f2f2' : 'transparent'}" [ngClass]="{odd: number % 2 !== 0}"
+            *ngFor="let number of evenNums">
             {{ number }}
           </li>
         </div>
       </ul>
+      <ng-template [ngIf]="!onlyOdd">
+        <div>
+          <li class="list-group-item" [ngStyle]="{backgroundColor: number % 2 !== 0 ? '#f2f2f2' : 'transparent'}" [ngClass]="{odd: number % 2 !== 0}"
+            *ngFor="let number of evenNums">
+            {{ number }}
+          </li>
+        </div>
+      </ng-template>
       <p appBasicHighlight>Style me with basic highlight directive.</p>
       <p appBetterHighlight>Style me with the better highlight directive</p>
       <p [appBetterHighlight]="'red'" [defaultColor]="'white'">Style me with the better highlight directive and bound parameters</p>
       <ng-template [ngIf]="onlyOdd">
         <p>Only odd</p>
       </ng-template>
+
+      <div *appUnless="onlyOdd">
+          <li class="list-group-item" [ngStyle]="{backgroundColor: number % 2 !== 0 ? '#f2f2f2' : 'transparent'}" [ngClass]="{odd: number % 2 !== 0}"
+            *ngFor="let number of evenNums">
+            {{ number }}
+          </li>
+        </div>
     </div>
   </div>
 </div>
